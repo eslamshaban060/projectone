@@ -22,7 +22,7 @@ export const OurProvidr = createContext()
 
 const ContextApiProvidr = ({children}) => {
 
-  const [state, dispatch] = useReducer(Appreducer,Initialaztion);
+  const [state, dispatch] = useReducer(Appreducer,loadFromLocalStorage());
 
   return (
     <OurProvidr.Provider value={{Basket:state.Basket,Product:state.Product,User:state.User,dispatch:dispatch}}>

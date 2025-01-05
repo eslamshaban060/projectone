@@ -5,18 +5,24 @@ export const Initialaztion = {
   User: null,
   Basket: [],
   Categoures: [],
-  Product: null,
+  Product: {id:0,
+    image:"",
+    title:"",
+    description:"",
+    price:"",
+    rating:"",
+    category:""},
 };
 
-// const loadFromLocalStorage = () => {
-//   const data = localStorage.getItem("appState");
-//   return data ? JSON.parse(data) : Initialaztion;
-// };
+const loadFromLocalStorage = () => {
+  const data = localStorage.getItem("appState");
+  return data ? JSON.parse(data) : Initialaztion;
+};
 
 
-// const saveToLocalStorage = (state) => {
-//   localStorage.setItem("appState", JSON.stringify(state));
-// };
+const saveToLocalStorage = (state) => {
+  localStorage.setItem("appState", JSON.stringify(state));
+};
 
 const Appreducer = (state, action) => {
   let newState;
@@ -27,7 +33,7 @@ const Appreducer = (state, action) => {
         ...state,
         Product: action.iteam,
       };
-      // saveToLocalStorage(newState); 
+      saveToLocalStorage(newState); 
       return newState;
 
     case "BASKET_CASE":
@@ -35,7 +41,7 @@ const Appreducer = (state, action) => {
         ...state,
         Basket: [...state.Basket, action.iteam],
       };
-      // saveToLocalStorage(newState); 
+      saveToLocalStorage(newState); 
       return newState;
 
       
@@ -44,7 +50,7 @@ const Appreducer = (state, action) => {
         ...state,
         Basket: [],
       };
-      // saveToLocalStorage(newState); 
+      saveToLocalStorage(newState); 
       return newState;
 
     case "REMOVE_PRODUCT":
@@ -59,7 +65,7 @@ const Appreducer = (state, action) => {
         ...state,
         Basket: newbasket,
       };
-      // saveToLocalStorage(newState); 
+      saveToLocalStorage(newState); 
       return newState;
 
     default:
@@ -77,4 +83,4 @@ export const Total =(Basket)=>{
 
 export default Appreducer;
 
-// export { loadFromLocalStorage };
+export { loadFromLocalStorage };
